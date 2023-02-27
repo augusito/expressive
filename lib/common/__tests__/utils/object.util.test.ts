@@ -1,4 +1,4 @@
-import { omit } from '../object.util';
+import { omit } from '../../utils/object.util';
 
 describe('omit', () => {
   it('can omit excluded props and leave non-excluded alone', () => {
