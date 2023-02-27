@@ -6,8 +6,8 @@ describe('ExpressServer (express instance)', () => {
   let expressApp: express.Application;
 
   beforeEach(async () => {
-    const adapter = new ExpressServer(express());
-    expressApp = adapter.getInstance();
+    const server = new ExpressServer(express());
+    expressApp = server.getInstance();
   });
 
   it(`/GET`, () => {
