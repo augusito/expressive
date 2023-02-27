@@ -31,6 +31,7 @@ module.exports = {
       files: ['**/*.test.js', '**/*.test.ts'],
       extends: ['plugin:jest/recommended'],
       rules: {
+        'jest/expect-expect': 'off',
         'jest/no-disabled-tests': 'off',
         'jest/no-conditional-expect': 'off',
       },
