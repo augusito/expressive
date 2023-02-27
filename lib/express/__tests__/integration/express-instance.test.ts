@@ -5,9 +5,9 @@ import { ExpressServer } from '../../express-server';
 describe('ExpressServer (express instance)', () => {
   let expressApp: express.Application;
 
-  beforeEach(async () => {
-    const server = new ExpressServer(express());
-    expressApp = server.getInstance();
+  beforeEach(() => {
+    const expressServer = new ExpressServer(express());
+    expressApp = expressServer.getInstance();
   });
 
   it(`/GET`, () => {
