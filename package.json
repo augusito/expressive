@@ -1,0 +1,17 @@
+{
+  "name": "expressive",
+  "version": "1.0.0",
+  "description": "Express TypeScript starter repository",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augusito/expressive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/augusito/expressive/issues"
+  },
+  "homepage": "https://github.com/augusito/expressive#readme"
+}
