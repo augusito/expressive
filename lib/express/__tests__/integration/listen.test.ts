@@ -1,20 +1,24 @@
-import * as express from 'express';
+import { Container } from '../../../container/container';
+import { ExpressModule } from '../../express.module';
 import { ExpressServer } from '../../express-server';
 
 describe('ExpressServer (listen)', () => {
-  let expressServer: ExpressServer;
+  let server: ExpressServer;
 
   beforeEach(() => {
-    expressServer = new ExpressServer(express());
-    expressServer.initHttpServer({});
+    const module = new ExpressModule();
+    const providers = module.register()?.['providers'] ?? [];
+    const container = new Container(providers);
+    server = container.get<ExpressServer>(ExpressServer.name);
+    server.initHttpServer({});
   });
 
   afterEach(async () => {
-    await expressServer.close();
+    await server.close();
   });
 
   it('should resolve with httpServer on success', () => {
-    const response = expressServer.listen(3000);
-    expect(response).toEqual(expressServer.getHttpServer());
+    const response = server.listen(3000);
+    expect(response).toEqual(server.getHttpServer());
   });
 });
