@@ -1,7 +1,12 @@
-import { ExpressServer } from '../lib/express/express-server';
+import * as express from 'express';
+import type { ExpressServer } from '../lib/express/express-server';
+import { HelloModule } from './hello/hello.module';
 
 export function defineRoutes(server: ExpressServer) {
-  server.getInstance().get('/', (req, res) => {
-    res.send('Hello world!');
+  server.get('/', (req: express.Request, res: express.Response) => {
+    res.send({ connected: true });
   });
+
+  // Hello routes
+  new HelloModule().registerRoutes(server);
 }

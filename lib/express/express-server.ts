@@ -2,14 +2,64 @@ import * as express from 'express';
 import * as http from 'http';
 import * as https from 'https';
 import * as net from 'net';
-import { Server } from '../common/types';
+import type { Server } from '../common/types';
+import type { MiddlewareFactory } from './middleware/middleware-factory';
+import { HandlerArgument, PathArgument } from './types';
 
 export class ExpressServer implements Server {
   private httpServer: http.Server | https.Server;
 
-  constructor(private readonly instance: express.Application) {}
+  constructor(
+    private readonly instance: express.Application,
+    private readonly factory: MiddlewareFactory,
+  ) {}
 
-  getInstance(): express.Application {
+  public use(...args: any[]) {
+    return this.instance.use(...args);
+  }
+
+  public pipe(
+    handlerOrPath: PathArgument | HandlerArgument,
+    handler?: HandlerArgument,
+  ) {
+    handler = handler ?? (handlerOrPath as HandlerArgument);
+    const path = handler === handlerOrPath ? '/' : handlerOrPath;
+    return this.use(path, this.bindHandler(handler));
+  }
+
+  public get(path: PathArgument, handler: HandlerArgument) {
+    return this.instance.get(path, this.bindHandler(handler));
+  }
+
+  public post(path: PathArgument, handler: HandlerArgument) {
+    return this.instance.post(path, this.bindHandler(handler));
+  }
+
+  public head(path: PathArgument, handler: HandlerArgument) {
+    return this.instance.head(path, this.bindHandler(handler));
+  }
+
+  public delete(path: PathArgument, handler: HandlerArgument) {
+    return this.instance.delete(path, this.bindHandler(handler));
+  }
+
+  public put(path: PathArgument, handler: HandlerArgument) {
+    return this.instance.put(path, this.bindHandler(handler));
+  }
+
+  public patch(path: PathArgument, handler: HandlerArgument) {
+    return this.instance.patch(path, this.bindHandler(handler));
+  }
+
+  public all(path: PathArgument, handler: HandlerArgument) {
+    return this.instance.all(path, this.bindHandler(handler));
+  }
+
+  public options(path: PathArgument, handler: HandlerArgument) {
+    return this.instance.options(path, this.bindHandler(handler));
+  }
+
+  public getInstance(): express.Application {
     return this.instance;
   }
 
@@ -45,5 +95,15 @@ export class ExpressServer implements Server {
       return undefined;
     }
     return new Promise((resolve) => this.httpServer.close(resolve));
+  }
+
+  public bindHandler(handler: HandlerArgument) {
+    let middleware = this.factory.prepare(handler);
+    if (!Array.isArray(middleware)) {
+      middleware = [middleware];
+    }
+    return middleware.map((mid: any) => {
+      return mid.process.bind(mid);
+    });
   }
 }
