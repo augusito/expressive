@@ -4,6 +4,27 @@ import { Module, Type } from './types';
 
 export type ConfigProvider = Module | Type<Module> | Function;
 
+export function mergeConfig(
+  target: Record<string, any> = {},
+  source: Array<{} | undefined | null>,
+): Record<string, any> {
+  for (const key in source) {
+    if (!isUndefined(source[key])) {
+      let obj = target[key];
+      const value = source[key];
+      if (Array.isArray(value)) {
+        obj = isUndefined(obj) ? [] : obj;
+        target[key] = obj.concat(value);
+      } else if (isObject(obj) && isObject(value)) {
+        target[key] = { ...obj, ...value };
+      } else {
+        target[key] = value;
+      }
+    }
+  }
+  return target;
+}
+
 export class ConfigAggregator {
   private config: Record<string, any>;
 
@@ -22,31 +43,10 @@ export class ConfigAggregator {
     for (const provider of providers) {
       const instance = this.resolveProvider(provider);
       if (this.isConfigProvider(instance)) {
-        this.mergeConfig(mergedConfig, instance.register());
+        mergeConfig(mergedConfig, instance.register());
       }
     }
     return mergedConfig;
-  }
-
-  private mergeConfig(
-    target: Record<string, any> = {},
-    source: Array<{} | undefined | null>,
-  ): Record<string, any> {
-    for (const key in source) {
-      if (!isUndefined(source[key])) {
-        let obj = target[key];
-        const value = source[key];
-        if (Array.isArray(value)) {
-          obj = isUndefined(obj) ? [] : obj;
-          target[key] = obj.concat(value);
-        } else if (isObject(obj) && isObject(value)) {
-          target[key] = { ...obj, ...value };
-        } else {
-          target[key] = value;
-        }
-      }
-    }
-    return target;
   }
 
   private resolveProvider(provider: ConfigProvider): ConfigProvider {
