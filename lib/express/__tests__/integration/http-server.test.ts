@@ -10,7 +10,7 @@ describe('ExpressServer (http server)', () => {
 
   beforeEach(() => {
     expressServer = new ExpressServer(express());
-    expressServer.initHttpServer();
+    expressServer.initHttpServer({});
     expressApp = expressServer.getInstance();
     httpServer = expressServer.getHttpServer();
   });

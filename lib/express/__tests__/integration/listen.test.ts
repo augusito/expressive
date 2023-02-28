@@ -6,7 +6,7 @@ describe('ExpressServer (listen)', () => {
 
   beforeEach(() => {
     expressServer = new ExpressServer(express());
-    expressServer.initHttpServer();
+    expressServer.initHttpServer({});
   });
 
   afterEach(async () => {
