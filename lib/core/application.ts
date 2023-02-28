@@ -25,8 +25,8 @@ export class Application {
     return this;
   }
 
-  public getServer() {
-    return this.server;
+  public getServer<T extends Server>(): T {
+    return this.server as T;
   }
 
   public getHttpServer() {
