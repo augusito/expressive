@@ -1,6 +1,7 @@
 import { platform } from 'os';
 import { isFunction, isString } from '../common/utils/lang.util';
 import { Server } from '../common/types';
+import { HookCollector } from './hooks/hook-collector';
 
 export class Application {
   private httpServer: any;
@@ -9,6 +10,7 @@ export class Application {
 
   constructor(
     private readonly server: Server,
+    private readonly hooks: HookCollector,
     private readonly options: any = {},
   ) {
     this.registerHttpServer();
@@ -18,7 +20,7 @@ export class Application {
     if (this.isInitialized) {
       return this;
     }
-
+    await this.hooks.addStartupHook();
     this.isInitialized = true;
     return this;
   }
@@ -80,7 +82,9 @@ export class Application {
   }
 
   public async close(signal?: string): Promise<void> {
+    await this.hooks.addBeforeShutdownHook(signal);
     await this.dispose();
+    await this.hooks.addShutdownHook(signal);
   }
 
   public async getUrl(): Promise<string> {
