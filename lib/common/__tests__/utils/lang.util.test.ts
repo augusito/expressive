@@ -9,7 +9,7 @@ import {
   isString,
   isSymbol,
   isUndefined,
-} from '../lang.util';
+} from '../../utils/lang.util';
 
 function Foo() {}
 
