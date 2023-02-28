@@ -29,3 +29,31 @@ export interface Server {
   close(): any;
   init?(): Promise<void>;
 }
+
+/**
+ * Interface defining method called during the application startup.
+ */
+export interface StartupHook {
+  /**
+   * 	Called before listening for connections.
+   */
+  onStartup(): any;
+}
+
+/**
+ * Interface defining methods to respond to system signals (when application gets
+ * shutdown by, e.g., SIGTERM)
+ */
+export interface ShutdownHook {
+  /**
+   * Called before connections close.
+   * @param signal the system signal
+   */
+  beforeShutdown(signal?: string): any;
+
+  /**
+   * Called after connections close.
+   * @param signal the system signal
+   */
+  onShutdown(signal?: string): any;
+}
