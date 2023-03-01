@@ -1,5 +1,5 @@
-import { isFunction, isUndefined } from '../common/utils/lang.util';
-import type { Type } from '../common/types';
+import { isFunction, isUndefined } from '../../src/common/utils/lang.util';
+import type { Type } from '../../src/common/types';
 import type {
   ClassProvider,
   ExistingProvider,

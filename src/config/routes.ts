@@ -1,7 +1,7 @@
 import * as express from 'express';
-import type { IContainer } from '../lib/container/types';
-import type { ExpressServer } from '../lib/express/express-server';
-import { HelloModule } from '../src/hello/hello.module';
+import type { IContainer } from '../container/types';
+import type { ExpressServer } from '../express/express-server';
+import { HelloModule } from '../hello/hello.module';
 
 export function defineRoutes(app: ExpressServer, container: IContainer) {
   app.get('/', (req: express.Request, res: express.Response) => {

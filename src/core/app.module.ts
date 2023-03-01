@@ -1,5 +1,5 @@
-import { Module, Server } from '../common/types';
-import { isFunction } from '../common/utils/lang.util';
+import { Module, Server } from '../../src/common/types';
+import { isFunction } from '../../src/common/utils/lang.util';
 import { IContainer, Provider } from '../container/types';
 import { ExpressServer } from '../express/express-server';
 import { Application } from './application';

@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { Module } from '../common/types';
+import { Module } from '../../src/common/types';
 import { IContainer, Provider } from '../container/types';
 import { ExpressServer } from './express-server';
 import { MiddlewareContainer } from './middleware/middleware-container';

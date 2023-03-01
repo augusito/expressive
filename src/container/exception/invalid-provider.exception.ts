@@ -1,4 +1,4 @@
-import { isPlainObject } from '../../common/utils/lang.util';
+import { isPlainObject } from '../../../src/common/utils/lang.util';
 import { INVALID_PROVIDER_MESSAGE } from '../messages';
 import { toString } from '../utils';
 import { RuntimeException } from './runtime.exception';

@@ -1,6 +1,6 @@
 import { iterate } from 'iterare';
-import type { ShutdownHook, StartupHook } from '../../common/types';
-import { isFunction, isNil } from '../../common/utils/lang.util';
+import type { ShutdownHook, StartupHook } from '../../../src/common/types';
+import { isFunction, isNil } from '../../../src/common/utils/lang.util';
 import type { HookFactory } from './hook-factory';
 
 export class HookCollector {

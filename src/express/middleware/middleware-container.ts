@@ -1,5 +1,5 @@
-import type { Type } from '../../common/types';
-import { isFunction } from '../../common/utils/lang.util';
+import type { Type } from '../../../src/common/types';
+import { isFunction } from '../../../src/common/utils/lang.util';
 import type { IContainer, ProviderToken } from '../../container/types';
 import { HttpHandlerMiddleware } from './hem-handler-middleware';
 

@@ -1,4 +1,4 @@
-import { isSymbol } from '../../common/utils/lang.util';
+import { isSymbol } from '../../../src/common/utils/lang.util';
 import { PROVIDER_NOT_FOUND_MESSAGE } from '../messages';
 import { RuntimeException } from './runtime.exception';
 

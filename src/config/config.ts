@@ -1,10 +1,10 @@
 import { globSync } from 'glob';
 import { join } from 'path';
-import { ConfigAggregator, mergeConfig } from '../lib/common/config-aggregator';
-import { dynamicRequire } from '../lib/common/dynamic-require';
-import { AppModule } from '../lib/core/app.module';
-import { ExpressModule } from '../lib/express/express.module';
-import { HelloModule } from '../src/hello/hello.module';
+import { ConfigAggregator, mergeConfig } from '../common/config-aggregator';
+import { dynamicRequire } from '../common/dynamic-require';
+import { AppModule } from '../core/app.module';
+import { ExpressModule } from '../express/express.module';
+import { HelloModule } from '../hello/hello.module';
 
 const aggregator = new ConfigAggregator([
   AppModule,

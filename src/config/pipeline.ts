@@ -4,9 +4,9 @@ import {
   OptionsUrlencoded,
   urlencoded as bodyParserUrlencoded,
 } from 'body-parser';
-import { getBodyParserOptions } from '../lib/common/get-body-parser-options';
-import type { IContainer } from '../lib/container/types';
-import type { ExpressServer } from '../lib/express/express-server';
+import { getBodyParserOptions } from '../common/get-body-parser-options';
+import type { IContainer } from '../container/types';
+import type { ExpressServer } from '../express/express-server';
 
 export function definePipeline(app: ExpressServer, container: IContainer) {
   const config: any = container.has('config') ? container.get('config') : {};

@@ -1,4 +1,4 @@
-import { isSymbol } from '../common/utils/lang.util';
+import { isSymbol } from '../../src/common/utils/lang.util';
 
 export const INVALID_CLASS_MESSAGE = (
   text: TemplateStringsArray,

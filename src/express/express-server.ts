@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as http from 'http';
 import * as https from 'https';
 import * as net from 'net';
-import type { Server } from '../common/types';
+import type { Server } from '../../src/common/types';
 import type { MiddlewareFactory } from './middleware/middleware-factory';
 import { HandlerArgument, PathArgument } from './types';
 

@@ -1,10 +1,10 @@
-import type { Type } from '../../common/types';
+import type { Type } from '../../../src/common/types';
 import {
   isFunction,
   isString,
   isSymbol,
   isUndefined,
-} from '../../common/utils/lang.util';
+} from '../../../src/common/utils/lang.util';
 import type { HttpHandler, HttpMiddleware } from '../types';
 import { CallableErrorMiddlewareDecorator } from './callable-error-middleware-decorator';
 import { CallableMiddlewareDecorator } from './callable-middleware-decorator';

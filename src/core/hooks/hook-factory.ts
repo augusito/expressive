@@ -3,7 +3,7 @@ import {
   isObject,
   isString,
   isSymbol,
-} from '../../common/utils/lang.util';
+} from '../../../src/common/utils/lang.util';
 import type { HookContainer } from './hook-container';
 
 export class HookFactory {

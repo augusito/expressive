@@ -1,6 +1,6 @@
-import type { Module } from '../../lib/common/types';
-import type { IContainer, Provider } from '../../lib/container/types';
-import { ExpressServer } from '../../lib/express/express-server';
+import type { Module } from '../common/types';
+import type { IContainer, Provider } from '../container/types';
+import { ExpressServer } from '../express/express-server';
 import { Hellohandler } from './hello.handler';
 import { HelloService } from './hello.service';
 

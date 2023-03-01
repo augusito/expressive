@@ -1,4 +1,4 @@
-import type { Type } from '../common/types';
+import type { Type } from '../../src/common/types';
 
 export type PathArgument = string | RegExp | (string | RegExp)[];
 

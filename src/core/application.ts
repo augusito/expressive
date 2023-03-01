@@ -1,6 +1,6 @@
 import { platform } from 'os';
-import { isFunction, isString } from '../common/utils/lang.util';
-import { Server } from '../common/types';
+import { isFunction, isString } from '../../src/common/utils/lang.util';
+import { Server } from '../../src/common/types';
 import { HookCollector } from './hooks/hook-collector';
 
 export class Application {

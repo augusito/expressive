@@ -1,8 +1,8 @@
-import { Application } from '../lib/core/application';
-import { container } from '../config/container';
-import { definePipeline } from '../config/pipeline';
-import { defineRoutes } from '../config/routes';
-import { ExpressServer } from '../lib/express/express-server';
+import { Application } from './core/application';
+import { container } from './config/container';
+import { definePipeline } from './config/pipeline';
+import { defineRoutes } from './config/routes';
+import { ExpressServer } from './express/express-server';
 
 async function main() {
   const app = container.get<Application & ExpressServer>(Application.name);
