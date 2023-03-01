@@ -7,7 +7,7 @@ import type { MiddlewareFactory } from './middleware/middleware-factory';
 import { HandlerArgument, PathArgument } from './types';
 
 export class ExpressServer implements Server {
-  private httpServer: http.Server | https.Server;
+  protected httpServer: http.Server | https.Server;
 
   constructor(
     private readonly instance: express.Application,

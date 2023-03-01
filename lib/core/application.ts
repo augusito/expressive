@@ -4,14 +4,14 @@ import { Server } from '../common/types';
 import { HookCollector } from './hooks/hook-collector';
 
 export class Application {
-  private httpServer: any;
+  protected httpServer: any;
   private isInitialized = false;
   private isListening = false;
 
   constructor(
     private readonly server: Server,
     private readonly hooks: HookCollector,
-    private readonly options: any = {},
+    private readonly appOptions: any = {},
   ) {
     this.registerHttpServer();
   }
@@ -38,7 +38,7 @@ export class Application {
   }
 
   public createServer<T = any>(): T {
-    this.server.initHttpServer(this.options);
+    this.server.initHttpServer(this.appOptions);
     return this.server.getHttpServer() as T;
   }
 
@@ -137,6 +137,6 @@ export class Application {
   }
 
   private getProtocol(): 'http' | 'https' {
-    return this.options && this.options.httpsOptions ? 'https' : 'http';
+    return this.appOptions && this.appOptions.httpsOptions ? 'https' : 'http';
   }
 }
