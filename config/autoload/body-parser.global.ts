@@ -1,7 +1,7 @@
 export default {
   bodyParser: {
     options: {
-      rawBody: true,
+      rawBody: false,
     },
   },
 };

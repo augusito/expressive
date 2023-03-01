@@ -1,7 +1,7 @@
 import { Application } from '../lib/core/application';
-import { container } from './container';
-import { definePipeline } from './pipeline';
-import { defineRoutes } from './routes';
+import { container } from '../config/container';
+import { definePipeline } from '../config/pipeline';
+import { defineRoutes } from '../config/routes';
 
 async function main() {
   const app = container.get<Application>(Application.name);

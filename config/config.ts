@@ -4,7 +4,7 @@ import { ConfigAggregator, mergeConfig } from '../lib/common/config-aggregator';
 import { dynamicRequire } from '../lib/common/dynamic-require';
 import { AppModule } from '../lib/core/app.module';
 import { ExpressModule } from '../lib/express/express.module';
-import { HelloModule } from './hello/hello.module';
+import { HelloModule } from '../src/hello/hello.module';
 
 const aggregator = new ConfigAggregator([
   AppModule,
@@ -12,11 +12,11 @@ const aggregator = new ConfigAggregator([
   HelloModule,
   () => {
     let config = {};
-    // Load configuration from config path
+    // Load configuration from autoload path
     const paths = globSync(
-      join(__dirname, '..', 'config/{{,*.}global,{,*.}local}.+(j|t)s'),
+      join(__dirname, 'autoload/{{,*.}global,{,*.}local}.+(j|t)s'),
     );
-    // Require each file in the config dir
+    // Require each file in the autoload dir
     paths.forEach((file: any) => {
       config = mergeConfig(config, dynamicRequire(file));
     });
@@ -24,6 +24,7 @@ const aggregator = new ConfigAggregator([
     return config;
   },
 ]);
+
 const config = aggregator.getMergedConfig();
 
 export { config };
