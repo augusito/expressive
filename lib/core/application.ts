@@ -81,12 +81,6 @@ export class Application {
     });
   }
 
-  public async close(signal?: string): Promise<void> {
-    await this.hooks.addBeforeShutdownHook(signal);
-    await this.dispose();
-    await this.hooks.addShutdownHook(signal);
-  }
-
   public async getUrl(): Promise<string> {
     return new Promise((resolve, reject) => {
       if (!this.isListening) {
@@ -99,6 +93,12 @@ export class Application {
       const address = this.httpServer.address();
       resolve(this.formatAddress(address));
     });
+  }
+
+  public async close(signal?: string): Promise<void> {
+    await this.hooks.addBeforeShutdownHook(signal);
+    await this.dispose();
+    await this.hooks.addShutdownHook(signal);
   }
 
   private async dispose(): Promise<void> {
