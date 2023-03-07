@@ -1,6 +1,6 @@
 {
-  "watch": ["lib", "src"],
+  "watch": ["lib", "app"],
   "ext": "ts",
   "ignore": ["**/*.test.ts"],
-  "exec": "ts-node -r tsconfig-paths/register src/main.ts"
+  "exec": "ts-node -r tsconfig-paths/register app/main.ts"
 }
